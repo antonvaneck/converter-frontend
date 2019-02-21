@@ -1,0 +1,11 @@
+<div>
+  <select [(ngModel)]="selected" (change)="unitChanged()">
+    <option *ngFor="let unit of units" [value]="unit.name">{{unit.name}}</option>
+  </select>
+</div>
+<div>
+  <input [(ngModel)]="metric" (change)="updateImperial()"/>{{unitSelected.metric}}
+  <span>=</span>
+  <input [(ngModel)]="imperial" (change)="updateMetric()" />{{unitSelected.imperial}}
+</div>
+
