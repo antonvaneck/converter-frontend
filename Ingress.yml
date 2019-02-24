@@ -1,0 +1,10 @@
+apiVersion: extensions/v1
+kind: Ingress
+metadata:
+  labels:
+    app: unit-converter-frontend
+  name: unit-converter-frontend-ingress
+spec:
+  backend:
+    serviceName: unit-converter-frontend-svc
+    servicePort: http-port

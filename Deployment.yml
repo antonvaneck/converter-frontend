@@ -1,0 +1,18 @@
+apiVersion: extensions/v1beta1
+kind: Deployment
+metadata:
+  name: unit-converter-frontend-dc
+spec:
+  replicas: 1
+  template:
+    metadata:
+      labels:
+        app: unit-converter-frontend
+    spec:
+      containers:
+      - name: unit-converter-frontend
+        image: unit_converter_frontend
+        ports:
+        - name: http-port
+          containerPort: 4200
+        imagePullPolicy: Always
