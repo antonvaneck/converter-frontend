@@ -1,20 +1,24 @@
 import { TestBed } from '@angular/core/testing';
-import { HttpClientTestingModule, HttpTestingController } from '@angular/common/http/testing';
+import { HttpClientTestingModule } from '@angular/common/http/testing';
 import { ConverterService } from './converter.service';
 
 describe('ConverterService', () => {
-  let http;
+  let http: { get: jasmine.Spy };
+  let service: ConverterService;
 
   beforeEach(() => {
     TestBed.configureTestingModule({
-      imports: [HttpClientTestingModule]
+      imports: [HttpClientTestingModule],
+      providers: [
+        ConverterService
+      ],
     });
-    http = TestBed.get(HttpTestingController);
+    http = jasmine.createSpyObj('HttpClient', ['get'])
+    service = new ConverterService(<any> http);
   });
 
   it('should be created', () => {
-    const service: ConverterService = TestBed.get(ConverterService);
-    console.log(service);
+    service = TestBed.get(ConverterService);
     expect(service).toBeTruthy();
   });
 
@@ -26,8 +30,5 @@ describe('ConverterService', () => {
       expect(convertedUnitValue.unit).toBe("asdf");
       expect(convertedUnitValue.value).toBe(0.3048);
     });
-    const request = http.expectOne('${service.convertUrl}');
-
-    expect(request.request.method).toBe('POST');
   });
 });

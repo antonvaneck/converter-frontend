@@ -4,8 +4,8 @@
   </select>
 </div>
 <div>
-  <input [(ngModel)]="metric" (change)="updateImperial()"/>{{unitSelected.metric}}
+  <input type="number" [(ngModel)]="metric" (change)="updateImperial()"/>{{unitSelected.metric}}
   <span>=</span>
-  <input [(ngModel)]="imperial" (change)="updateMetric()" />{{unitSelected.imperial}}
+  <input type="number"[(ngModel)]="imperial" (change)="updateMetric()" />{{unitSelected.imperial}}
 </div>
 
